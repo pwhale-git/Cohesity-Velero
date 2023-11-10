@@ -98,6 +98,10 @@ mount -o remount,exec /var
 edit fstab to -> exec
 ```
 
+Example:
+![image](https://github.com/pwhale-git/Cohesity-Velero/assets/150215442/b0b0db2e-0b52-4400-a08c-4db1ff14cf69)
+
+
 
 
 
