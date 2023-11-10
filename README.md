@@ -66,7 +66,7 @@ Add the following:
       containers:
       - args:
 ~
-        `securityContext:
+        securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
@@ -74,11 +74,11 @@ Add the following:
           readOnlyRootFilesystem: true
           runAsGroup: 999
           runAsNonRoot: true
-          runAsUser: 1001`
+          runAsUser: 1001
 ~
-      `initContainers:`
+      initContainers:
 ~
-        `securityContext:
+        securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
@@ -86,7 +86,7 @@ Add the following:
           readOnlyRootFilesystem: true
           runAsGroup: 999
           runAsNonRoot: true
-          runAsUser: 1001`
+          runAsUser: 1001
 ```
 
 ***
