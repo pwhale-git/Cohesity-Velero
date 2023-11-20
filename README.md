@@ -91,6 +91,7 @@ Add the following:
 
 ***
 ### 5. Modify /var/ path to be non-exec in K8s workers
+Refer to blog post for details on solution: [https://github.com/vmware-tanzu/velero/discussions/3248](https://github.com/vmware-tanzu/velero/discussions/3248)
 
 ```
 cat /etc/fstab
