@@ -28,7 +28,7 @@ kubectl create serviceaccount cohesity -n default
 kubectl create clusterrolebinding cohesity-admin --clusterrole=cluster-admin --serviceaccount=default:cohesity
 ```
 
-Create secret for Cohesity service account
+Create secret for Cohesity service account in reachable namespace e.g. file name cohesity-secret.yaml in namespace default
 ```
 apiVersion: v1
 kind: Secret
@@ -40,12 +40,14 @@ type: kubernetes.io/service-account-token
 ```
 
 Push Datamover, Velero, and Velero plugin for AWS image into private registry.
+
 Use nerdctl to pull image from private registry to ALL K8s workers. [https://github.com/containerd/nerdctl](https://github.com/containerd/nerdctl)
 
 ***
 ### 3. Input parameters from 2. into Cohesity GUI 
 Format for input on GUI is `https://<IP of K8s master node>:6443`
-Insert Bearer token from cohesity using `kubectl describe secret cohesity
+
+Insert Bearer token from cohesity using `kubectl describe secret cohesity`
 
 Insert image component from registry:
 * datamover image (datamover version == Cohesity cluster version)
@@ -90,7 +92,7 @@ Add the following:
 ```
 
 ***
-### 5. Modify /var/ path to be non-exec in K8s workers
+### 5. Modify /var/ path to be non-exec in ALL K8s workers
 Refer to blog post for details on solution: [https://github.com/vmware-tanzu/velero/discussions/3248](https://github.com/vmware-tanzu/velero/discussions/3248)
 
 ```
