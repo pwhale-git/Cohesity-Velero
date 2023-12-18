@@ -105,6 +105,13 @@ Example:
 ![image](https://github.com/pwhale-git/Cohesity-Velero/assets/150215442/b0b0db2e-0b52-4400-a08c-4db1ff14cf69)
 
 
+### Troubleshooting
 
+1. Datamover service not found 
+![image](https://github.com/pwhale-git/Cohesity-Velero/assets/150215442/16742c38-4870-4f6a-ba7f-5df24c84404f)
 
+Soln patch Datamover to not run on control plane and to be able to be deployed across K8s workers:
+```
+kubectl patch daemonset cohesity-dm -n <cohesity-namespace> --patch '{"spec": {"template": {"spec": {"tolerations": [{"effect": "NoSchedule","key": "node-role.kubernetes.io/controlplane","operator": "Exists"},{"effect": "NoExecute","key": "node-role.kubernetes.io/etcd","value": "true","operator": "Equal"}]}}}}'
+```
 
